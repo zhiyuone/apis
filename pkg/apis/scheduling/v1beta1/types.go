@@ -292,13 +292,22 @@ type QueueStatus struct {
 
 	// Reservation is the profile of resource reservation for queue
 	Reservation Reservation `json:"reservation,omitempty" protobuf:"bytes,6,opt,name=reservation"`
+
+	Jobs []CrossVersionObjectReference `json:"jobs,omitempty" protobuf:"bytes,7,opt,name=guarantee"`
 }
 
 // CluterSpec represents the template of Cluster
 type Cluster struct {
-	Name string              `json:"name,omitempty" protobuf:"bytes,1,opt,name=name"`
-	Weight int32             `json:"weight,omitempty" protobuf:"bytes,2,opt,name=weight"`
+	Name     string          `json:"name,omitempty" protobuf:"bytes,1,opt,name=name"`
+	Weight   int32           `json:"weight,omitempty" protobuf:"bytes,2,opt,name=weight"`
 	Capacity v1.ResourceList `json:"capacity,omitempty" protobuf:"bytes,3,opt,name=capacity"`
+}
+
+type CrossVersionObjectReference struct {
+	APIVersion string `json:"apiVersion" protobuf:"bytes,1,opt,name=name"`
+	Kind       string `json:"kind" protobuf:"bytes,2,opt,name=name"`
+	Name       string `json:"name" protobuf:"bytes,3,opt,name=name"`
+	Namespace  string `json:"namespace" protobuf:"bytes,4,opt,name=name"`
 }
 
 // QueueSpec represents the template of Queue.
@@ -309,11 +318,11 @@ type QueueSpec struct {
 	// Reclaimable indicate whether the queue can be reclaimed by other queue
 	Reclaimable *bool `json:"reclaimable,omitempty" protobuf:"bytes,3,opt,name=reclaimable"`
 
-    // extendCluster indicate the jobs in this Queue will be dispatched to these clusters.
+	// extendCluster indicate the jobs in this Queue will be dispatched to these clusters.
 	ExtendClusters []Cluster `json:"extendClusters,omitempty" protobuf:"bytes,4,opt,name=extendClusters"`
 
 	// Guarantee indicate configuration about resource reservation
-	Guarantee Guarantee `json:"guarantee,omitempty" protobuf:"bytes,4,opt,name=guarantee"`
+	Guarantee Guarantee `json:"guarantee,omitempty" protobuf:"bytes,5,opt,name=guarantee"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

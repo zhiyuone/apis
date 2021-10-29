@@ -276,12 +276,21 @@ type QueueStatus struct {
 
 	// Reservation is the profile of resource reservation for queue
 	Reservation Reservation `json:"reservation,omitempty" protobuf:"bytes,6,opt,name=reservation"`
+
+	Jobs []CrossVersionObjectReference
+}
+
+type CrossVersionObjectReference struct {
+	APIVersion string
+	Kind       string
+	Name       string
+	Namespace  string
 }
 
 // CluterSpec represents the template of Cluster
 type Cluster struct {
-	Name string
-	Weight int32
+	Name     string
+	Weight   int32
 	Capacity v1.ResourceList
 }
 
