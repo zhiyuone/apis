@@ -328,6 +328,20 @@ func (in *QueueStatus) DeepCopyInto(out *QueueStatus) {
 		*out = make([]CrossVersionObjectReference, len(*in))
 		copy(*out, *in)
 	}
+	if in.Capability != nil {
+		in, out := &in.Capability, &out.Capability
+		*out = make(v1.ResourceList, len(*in))
+		for key, val := range *in {
+			(*out)[key] = val.DeepCopy()
+		}
+	}
+	if in.Allocated != nil {
+		in, out := &in.Allocated, &out.Allocated
+		*out = make(v1.ResourceList, len(*in))
+		for key, val := range *in {
+			(*out)[key] = val.DeepCopy()
+		}
+	}
 	return
 }
 

@@ -278,6 +278,9 @@ type QueueStatus struct {
 	Reservation Reservation `json:"reservation,omitempty" protobuf:"bytes,6,opt,name=reservation"`
 
 	Jobs []CrossVersionObjectReference
+
+	Capability v1.ResourceList
+	Allocated  v1.ResourceList
 }
 
 type CrossVersionObjectReference struct {

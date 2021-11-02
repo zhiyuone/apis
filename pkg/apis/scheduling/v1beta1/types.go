@@ -294,6 +294,9 @@ type QueueStatus struct {
 	Reservation Reservation `json:"reservation,omitempty" protobuf:"bytes,6,opt,name=reservation"`
 
 	Jobs []CrossVersionObjectReference `json:"jobs,omitempty" protobuf:"bytes,7,opt,name=guarantee"`
+
+	Capability v1.ResourceList `json:"capability,omitempty" protobuf:"bytes,8,opt,name=capability"`
+	Allocated  v1.ResourceList `json:"allocated,omitempty" protobuf:"bytes,9,opt,name=allocated"`
 }
 
 // CluterSpec represents the template of Cluster

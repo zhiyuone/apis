@@ -490,6 +490,8 @@ func autoConvert_v1beta1_QueueStatus_To_scheduling_QueueStatus(in *QueueStatus, 
 		return err
 	}
 	out.Jobs = *(*[]scheduling.CrossVersionObjectReference)(unsafe.Pointer(&in.Jobs))
+	out.Capability = *(*v1.ResourceList)(unsafe.Pointer(&in.Capability))
+	out.Allocated = *(*v1.ResourceList)(unsafe.Pointer(&in.Allocated))
 	return nil
 }
 
@@ -508,6 +510,8 @@ func autoConvert_scheduling_QueueStatus_To_v1beta1_QueueStatus(in *scheduling.Qu
 		return err
 	}
 	out.Jobs = *(*[]CrossVersionObjectReference)(unsafe.Pointer(&in.Jobs))
+	out.Capability = *(*v1.ResourceList)(unsafe.Pointer(&in.Capability))
+	out.Allocated = *(*v1.ResourceList)(unsafe.Pointer(&in.Allocated))
 	return nil
 }
 
