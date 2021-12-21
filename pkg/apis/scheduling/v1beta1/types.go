@@ -307,10 +307,11 @@ type Cluster struct {
 }
 
 type CrossVersionObjectReference struct {
-	APIVersion string `json:"apiVersion" protobuf:"bytes,1,opt,name=name"`
-	Kind       string `json:"kind" protobuf:"bytes,2,opt,name=name"`
-	Name       string `json:"name" protobuf:"bytes,3,opt,name=name"`
-	Namespace  string `json:"namespace" protobuf:"bytes,4,opt,name=name"`
+	APIVersion   string            `json:"apiVersion" protobuf:"bytes,1,opt,name=apiVersion"`
+	Kind         string            `json:"kind" protobuf:"bytes,2,opt,name=kind"`
+	Name         string            `json:"name" protobuf:"bytes,3,opt,name=name"`
+	Namespace    string            `json:"namespace" protobuf:"bytes,4,opt,name=namespace"`
+	ExternalInfo map[string]string `json:"externalInfo" protobuf:"bytes,5,opt,name=externalInfo"`
 }
 
 // QueueSpec represents the template of Queue.

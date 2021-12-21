@@ -284,10 +284,11 @@ type QueueStatus struct {
 }
 
 type CrossVersionObjectReference struct {
-	APIVersion string
-	Kind       string
-	Name       string
-	Namespace  string
+	APIVersion   string
+	Kind         string
+	Name         string
+	Namespace    string
+	ExternalInfo map[string]string
 }
 
 // CluterSpec represents the template of Cluster
